@@ -48,7 +48,10 @@ class Game {
 
     menStillStanding(arrayOfCards) {
         arrayOfCards.map(i => new Card(i)).forEach(i => this.putCardOnPlayer(i));
-        return [this.teamA.players.filter(i => i.isDeleted).length, this.teamB.players.filter(i => i.isDeleted).length];
+        return [
+            this.teamA.players.filter(i => !i.isDeleted()).length,
+            this.teamB.players.filter(i => !i.isDeleted()).length
+        ];
     }
 }
 
