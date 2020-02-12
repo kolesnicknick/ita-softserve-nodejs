@@ -1,9 +1,9 @@
 let nextVersion = function (currentversion) {
     let current = [];
 
-    function increment(int) {
+    function increment(int, isFirst = false) {
         int = parseInt(int);
-        return int === 9 ? 0 : int+1;
+        return isFirst ? int++ : (int === 9 ? 0 : int+1);
     };
 
     current = currentversion.split('.');
@@ -11,14 +11,14 @@ let nextVersion = function (currentversion) {
     let shouldProceed = true;
     for (let i = current.length-1; i > -1; i--){
         if(shouldProceed){
-            current[i] = increment(current[i]);
+            current[i] = increment(current[i], i===0);
             if (current[i] ===0){shouldProceed=true}
             else {shouldProceed=false};
         }
     }
 
     let toReturn = '';
-    for (let i = 0; i < current.length; i++){toReturn+=current[i]+'.'}
+    toReturn = current.join(".");
     return toReturn;
 };
 
