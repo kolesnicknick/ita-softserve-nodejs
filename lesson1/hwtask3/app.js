@@ -28,10 +28,9 @@ class Player {
 
 class Card {
     constructor(value) {
-        let values = value.split('');
-        this.isRed = values[2] === 'R';
-        this.team = values[0];
-        this.playerNumber = parseInt(values[1]);
+        this.isRed = value.slice(-1) === 'R';
+        this.team = value[0];
+        this.playerNumber = parseInt(value.slice(1, -1));
     }
 }
 
@@ -55,4 +54,4 @@ class Game {
     }
 }
 
-console.log(new Game().menStillStanding(['A4Y', 'A4Y', 'B4R']));
+console.log(new Game().menStillStanding(['A4Y', 'A4Y', 'B4R', 'B10R', 'B5R', 'B6R', 'B7R', 'B8R']));
